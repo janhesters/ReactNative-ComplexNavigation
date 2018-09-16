@@ -12,14 +12,21 @@
     "react-native": "0.57.0"
   },
   "devDependencies": {
+    "@types/enzyme": "^3.1.14",
+    "@types/enzyme-adapter-react-16": "^1.0.3",
     "@types/jest": "23.3.2",
     "@types/react": "16.4.14",
     "@types/react-native": "0.56.19",
     "@types/react-test-renderer": "16.0.2",
     "babel-jest": "23.6.0",
+    "enzyme": "^3.6.0",
+    "enzyme-adapter-react-16": "^1.5.0",
     "jest": "23.6.0",
+    "jest-fetch-mock": "^1.6.6",
     "metro-react-native-babel-preset": "0.45.3",
+    "react-dom": "^16.5.1",
     "react-test-renderer": "16.5.0",
+    "ts-jest": "^23.1.4",
     "typescript": "3.0.3"
   },
   "jest": {
