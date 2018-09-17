@@ -1,1 +1,1 @@
-# React Native with TypeScript, Jest and Enzyme
+# React Native with internationalization and orientation handling.
