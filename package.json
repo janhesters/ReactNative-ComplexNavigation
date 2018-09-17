@@ -10,7 +10,8 @@
   "dependencies": {
     "react": "16.5.0",
     "react-native": "0.57.0",
-    "react-native-localization": "^2.0.1"
+    "react-native-localization": "^2.0.1",
+    "react-native-orientation": "^3.1.3"
   },
   "devDependencies": {
     "@types/enzyme": "^3.1.14",
@@ -18,6 +19,7 @@
     "@types/jest": "23.3.2",
     "@types/react": "16.4.14",
     "@types/react-native": "0.56.19",
+    "@types/react-native-orientation": "^5.0.1",
     "@types/react-test-renderer": "16.0.2",
     "babel-eslint": "^9.0.0",
     "babel-jest": "23.6.0",
