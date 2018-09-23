@@ -1,17 +1,20 @@
 import styles from "./styles";
 import React, { Component } from "react";
-import { Text, View } from "react-native";
+import { Text, View, ActivityIndicator } from "react-native";
 import { NavigationScreenProps } from "react-navigation";
 
 class LoadingScreen extends Component<NavigationScreenProps> {
   componentDidMount = () => {
-    this.props.navigation.navigate("HomeScreen");
+    setTimeout(() => {
+      this.props.navigation.navigate("LoginScreen");
+    }, 2000);
   };
 
   render() {
     return (
       <View style={styles.container}>
-        <Text>This is the LoadingScreen.</Text>
+        <Text style={{ paddingBottom: 20 }}>This is the LoadingScreen.</Text>
+        <ActivityIndicator size="large" />
       </View>
     );
   }

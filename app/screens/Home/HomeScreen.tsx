@@ -1,4 +1,7 @@
+import strings from "./strings";
 import styles from "./styles";
+import { strings as detailStrings } from "../Detail";
+import { strings as optionStrings } from "../Options";
 import React, { Component } from "react";
 import { Platform, Text, View } from "react-native";
 import { Button, Icon } from "react-native-elements";
@@ -6,7 +9,7 @@ import { NavigationScreenProps } from "react-navigation";
 
 class HomeScreen extends Component<NavigationScreenProps> {
   static navigationOptions = ({ navigation }: NavigationScreenProps) => ({
-    headerTitle: "Home",
+    headerTitle: strings.homeTitle,
     headerLeft: Platform.select({
       ios: null,
       android: (
@@ -25,8 +28,8 @@ class HomeScreen extends Component<NavigationScreenProps> {
     return (
       <View style={styles.container}>
         <Text>This is the HomeScreen.</Text>
-        <Button title="Details" onPress={() => navigate("DetailScreen")} />
-        <Button title="Options" onPress={() => navigate("OptionsScreen")} />
+        <Button title={detailStrings.detailTitle} onPress={() => navigate("DetailScreen")} />
+        <Button title={optionStrings.optionsTitle} onPress={() => navigate("OptionsScreen")} />
       </View>
     );
   }

@@ -1,9 +1,12 @@
-import BurgerMenu from "./../components/BurgerMenu";
+import BurgerMenu from "../components/BurgerMenu";
 import DetailScreen from "../screens/Detail";
-import HomeScreen from "../screens/Home";
+import HomeScreen, { strings as homeStrings } from "../screens/Home";
 import LoadingScreen from "../screens/Loading";
+import LoginScreen, { strings as loginStrings } from "../screens/Login";
 import OptionsScreen from "../screens/Options";
-import SettingsScreen from "../screens/Settings";
+import PasswordResetScreen from "../screens/PasswordReset";
+import RegisterScreen from "../screens/Register";
+import SettingsScreen, { strings as settingsStrings } from "../screens/Settings";
 import React from "react";
 import { Platform } from "react-native";
 import { Icon } from "react-native-elements";
@@ -53,13 +56,13 @@ HomeStack.navigationOptions = ({ navigation }: NavigationScreenProps) => {
   }
 
   return {
-    tabBarLabel: "Home",
+    tabBarLabel: homeStrings.homeTitle,
     tabBarIcon: ({ tintColor }: TabScene) => (
       <Icon name="ios-home" type="ionicon" color={tintColor} />
     ),
     tabBarVisible,
     drawerLockMode,
-    drawerLabel: "Home",
+    drawerLabel: homeStrings.homeTitle,
     drawerIcon: ({ tintColor }: TabScene) => (
       <Icon name="md-home" type="ionicon" color={tintColor} />
     )
@@ -69,9 +72,9 @@ HomeStack.navigationOptions = ({ navigation }: NavigationScreenProps) => {
 const SettingsStack = createStackNavigator({ SettingsScreen });
 
 SettingsStack.navigationOptions = {
-  tabBarLabel: "Settings",
+  tabBarLabel: settingsStrings.settingsTitle,
   tabBarIcon: ({ tintColor }: TabScene) => <Icon name="ios-cog" type="ionicon" color={tintColor} />,
-  drawerLabel: "Settings",
+  drawerLabel: settingsStrings.settingsTitle,
   drawerIcon: ({ tintColor }: TabScene) => <Icon name="md-cog" type="ionicon" color={tintColor} />
 };
 
@@ -80,6 +83,26 @@ const MainNavigator = Platform.select({
   android: createDrawerNavigator({ HomeStack, SettingsStack }, { contentComponent: BurgerMenu })
 });
 
-const RootSwitch = createSwitchNavigator({ LoadingScreen, MainNavigator });
+const LoginStack = createStackNavigator({ LoginScreen, PasswordResetScreen });
+
+LoginStack.navigationOptions = ({ navigation }: NavigationScreenProps) => {
+  let tabBarVisible = true;
+  if (navigation.state.index > 0) {
+    tabBarVisible = false;
+  }
+
+  return {
+    tabBarLabel: loginStrings.loginTitle,
+    tabBarIcon: ({ tintColor }: TabScene) => {
+      let iconName = Platform.select({ ios: "ios-log-in", android: "md-log-in" });
+      return <Icon name={iconName} type="ionicon" color={tintColor} />;
+    },
+    tabBarVisible
+  };
+};
+
+const AuthTabs = createBottomTabNavigator({ LoginStack, RegisterScreen });
+
+const RootSwitch = createSwitchNavigator({ LoadingScreen, AuthTabs, MainNavigator });
 
 export default RootSwitch;

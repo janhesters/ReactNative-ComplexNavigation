@@ -1,10 +1,11 @@
 import styles from "./styles";
 import React, { Component } from "react";
 import { Text, View } from "react-native";
+import strings from "./strings";
 
 class DetailScreen extends Component {
   static navigationOptions = {
-    headerTitle: "Details"
+    headerTitle: strings.detailTitle
   };
 
   render() {

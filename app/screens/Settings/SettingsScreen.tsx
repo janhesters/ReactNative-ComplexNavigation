@@ -1,3 +1,4 @@
+import strings from "./strings";
 import styles from "./styles";
 import React, { Component } from "react";
 import { Platform, Text, View } from "react-native";
@@ -6,10 +7,15 @@ import { NavigationScreenProps } from "react-navigation";
 
 class SettingsScreen extends Component {
   static navigationOptions = ({ navigation }: NavigationScreenProps) => ({
-    headerTitle: "Settings",
+    headerTitle: strings.settingsTitle,
     headerLeft: Platform.select({
       ios: (
-        <Icon name="ios-log-out" type="ionicon" containerStyle={styles.icon} onPress={() => {}} />
+        <Icon
+          name="ios-log-out"
+          type="ionicon"
+          containerStyle={styles.icon}
+          onPress={() => navigation.navigate("LoginScreen")}
+        />
       ),
       android: (
         <Icon
